@@ -100,9 +100,9 @@ public class ProdutoController{
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
 		
-		Optional<Produto> postagem = produtoRepository.findById(id);
+		Optional<Produto> produto = produtoRepository.findById(id);
 		
-		if(postagem.isEmpty()) {
+		if(produto.isEmpty()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 			
 		}
