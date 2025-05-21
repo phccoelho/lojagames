@@ -55,7 +55,7 @@ public class ProdutoController{
 	}
 	
 	//Select pelo Maior Preço
-	@GetMapping("/maior-preco/{preco}")
+	@GetMapping("/maior_preco/{preco}")
 	public ResponseEntity<Produto> getProdutoComMaiorPreco() {
 	    return produtoRepository.findTopByOrderByPrecoDesc()
 	    		.map(resposta -> ResponseEntity.ok(resposta))
@@ -63,7 +63,7 @@ public class ProdutoController{
 	}
 	
 	//Select pelo Menor Preço
-	@GetMapping("/menor-preco/{preco}")
+	@GetMapping("/menor_preco/{preco}")
 	public ResponseEntity<Produto> getProdutoComMenorPreco() {
 	    return produtoRepository.findTopByOrderByPrecoDesc()
 	    		.map(resposta -> ResponseEntity.ok(resposta))
