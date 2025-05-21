@@ -1,5 +1,6 @@
 package com.generation.lojagames.controller;
 
+
 import java.util.List;
 import java.util.Optional;
 
@@ -51,6 +52,22 @@ public class ProdutoController{
 	@GetMapping("/titulo/{titulo}")
 	public ResponseEntity<List<Produto>> getAllByTitulo(@PathVariable String nome){		
 		return ResponseEntity.ok(produtoRepository.findAllByNomeContainingIgnoreCase(nome));
+	}
+	
+	//Select pelo Maior Preço
+	@GetMapping("/maior-preco/{preco}")
+	public ResponseEntity<Produto> getProdutoComMaiorPreco() {
+	    return produtoRepository.findTopByOrderByPrecoDesc()
+	    		.map(resposta -> ResponseEntity.ok(resposta))
+	            .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+	}
+	
+	//Select pelo Menor Preço
+	@GetMapping("/menor-preco/{preco}")
+	public ResponseEntity<Produto> getProdutoComMenorPreco() {
+	    return produtoRepository.findTopByOrderByPrecoDesc()
+	    		.map(resposta -> ResponseEntity.ok(resposta))
+	            .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 	
 	@PostMapping
