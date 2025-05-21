@@ -65,7 +65,7 @@ public class ProdutoController{
 	//Select pelo Menor Preço
 	@GetMapping("/menor_preco/{preco}")
 	public ResponseEntity<Produto> getProdutoComMenorPreco() {
-	    return produtoRepository.findTopByOrderByPrecoDesc()
+	    return produtoRepository.findTopByOrderByPrecoAsc()
 	    		.map(resposta -> ResponseEntity.ok(resposta))
 	            .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
